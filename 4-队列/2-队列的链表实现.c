@@ -4,14 +4,15 @@
 
 #define ElemType int
 
-typedef struct QNode {
+typedef struct QNode
+{
     ElemType element;
     struct QNode *next;
-}QNode , *Queue;
+} QNode, *Queue;
 
 typedef struct LinkedQueue
 {
-    Queue front,rear;
+    Queue front, rear;
 } *LinkedQueue;
 
 Queue CreateQueue()
@@ -33,12 +34,14 @@ bool is_empty(LinkedQueue lq)
     return lq->front == NULL && lq->rear == NULL;
 }
 
-bool EnQueue(LinkedQueue lq,ElemType e)
+bool EnQueue(LinkedQueue lq, ElemType e)
 {
     Queue node = CreateQueue();
-    if(node == NULL) return false;
+    if (node == NULL)
+        return false;
     node->element = e;
-    if(is_empty(lq)) lq->front = lq->rear = node;
+    if (is_empty(lq))
+        lq->front = lq->rear = node;
     else
     {
         node->next = lq->rear->next;
@@ -50,19 +53,22 @@ bool EnQueue(LinkedQueue lq,ElemType e)
 
 ElemType DeQueue(LinkedQueue lq)
 {
-    if(is_empty(lq)) return -1;
+    if (is_empty(lq))
+        return -1;
     ElemType elem = lq->front->element;
-    if(lq->front == lq->rear) lq->front = lq->rear = NULL; 
-    else lq->front = lq->front->next;
+    if (lq->front == lq->rear)
+        lq->front = lq->rear = NULL;
+    else
+        lq->front = lq->front->next;
     return elem;
 }
 
 void PrintQueue(LinkedQueue lq)
 {
     Queue q = lq->front;
-    while(q)
+    while (q)
     {
-        printf("%d ",q->element);
+        printf("%d ", q->element);
         q = q->next;
     }
     printf("\n");
@@ -71,12 +77,12 @@ void PrintQueue(LinkedQueue lq)
 int main()
 {
     LinkedQueue lq = initLinkedQueue();
-    EnQueue(lq,1);
-    EnQueue(lq,2);
-    EnQueue(lq,3);
-    EnQueue(lq,4);
-    printf("%d\n",DeQueue(lq));
-    printf("%d\n",DeQueue(lq));
+    EnQueue(lq, 1);
+    EnQueue(lq, 2);
+    EnQueue(lq, 3);
+    EnQueue(lq, 4);
+    printf("%d\n", DeQueue(lq));
+    printf("%d\n", DeQueue(lq));
     PrintQueue(lq);
     return 0;
 }
