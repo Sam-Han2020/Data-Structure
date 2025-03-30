@@ -260,9 +260,9 @@ int main()
     f->left = f->right = NULL;
 
     // preOrder0(a);
-    // inOrder0(a);
+    inOrder0(a);
     // postOrder0(a);
-    levelOrder(a);
+    // levelOrder(a);
 
     return 0;
 }
