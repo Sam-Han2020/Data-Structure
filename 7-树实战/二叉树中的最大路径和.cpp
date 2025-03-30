@@ -32,7 +32,7 @@ class Solution {
             int leftmax = max(dfs(root->left) , 0);
             int rightmax = max(dfs(root->right) , 0);
             result = max(leftmax + rightmax + root->val , result);
-            return max(leftmax,rightmax) + root->val;
+            return max(leftmax,rightmax) + root->val; // 只return一个方向
         }
     
         int maxPathSum(TreeNode* root) {
