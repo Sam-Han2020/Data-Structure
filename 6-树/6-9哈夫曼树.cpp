@@ -124,6 +124,8 @@ void inOrder(Tree root)
 //     return str;
 // }
 
+// 下面两个是自己写的
+
 // 最佳编码方案
 void Encode(Tree root,string str)
 {
@@ -133,6 +135,7 @@ void Encode(Tree root,string str)
     Encode(root->right,str+"1");
 }
 
+// 输出单个
 string encode(Tree root, string str, E elem) {
     if (root == nullptr) return "";
     if (root->element == elem) return str;
@@ -143,8 +146,6 @@ string encode(Tree root, string str, E elem) {
     string right = encode(root->right, str + "1", elem);
     return right;
 }
-
-
 
 int main()
 {
@@ -170,7 +171,7 @@ int main()
 
     Tree root = pollQueue(queue);
     Encode(root,"");
-    // inOrder(root);
+    inOrder(root);
     cout<<encode(root,"",'B')<<endl;
     cout<<encode(root,"",'D')<<endl;
     cout<<encode(root,"",'A')<<endl;
